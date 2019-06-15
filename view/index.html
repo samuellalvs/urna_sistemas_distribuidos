@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <title>Urna Eletrônica</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/07ab199bd1.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <!-- <div class="row" style="height: 50px">
+            <div class="col-md-12 text-right my-auto">
+                <button type="button" class="btn btn-primary" data-toggle="modal"
+                    data-target="#modal-cpf">
+                    CPF
+                </button>
+            </div>
+        </div> -->
+        <div class="row" style="height: 40rem;">
+            <div class="col-md-12 my-auto">
+                <div class="card text-center">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#">Votação</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Resultados</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 response-alert mx-auto">
+
+                            </div>
+                        </div>
+                        <div class="row" style="height: 60px;">
+                            <div class="col-md-12">
+                                <img src="image/justica_eleitoral.jpg" style="width:3%">
+                                <span class="card-title"><b>Justiça Eleitoral</b></span>
+                            </div>
+                        </div>
+                        <div class="row" style="heigth:30rem;">
+                            <div class="col-md-3 candidate">
+                                <div class="card shadow-sm" style="height:28rem;">
+                                    <img class="card-img-top" id="candidate-img" src="image/candidato_icon.png"
+                                        alt="Imagem de capa do card">
+                                    <div class="card-body">
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item"><b>Nome: </b><span id="candidate-name"></span></li>
+                                            <li class="list-group-item"><b>Numero: </b><span id="candidate-number"></span></li>
+                                            <li class="list-group-item"><b>Partido: </b><span id="candidate-political"></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="card mx-auto shadow-sm" style="height: 100%">
+                                    <div class="card-body">
+                                        <div class="container">
+                                            <div class="tastierino">
+                                                <div class="tasti">
+                                                    <div class="num num1">
+                                                        <p>1</p>
+                                                    </div>
+                                                    <div class="num num2">
+                                                        <p>2</p>
+                                                    </div>
+                                                    <div class="num num3">
+                                                        <p>3</p>
+                                                    </div><br>
+                                                    <div class="num num4">
+                                                        <p>4</p>
+                                                    </div>
+                                                    <div class="num num5">
+                                                        <p>5</p>
+                                                    </div>
+                                                    <div class="num num6">
+                                                        <p>6</p>
+                                                    </div><br>
+                                                    <div class="num num7">
+                                                        <p>7</p>
+                                                    </div>
+                                                    <div class="num num8">
+                                                        <p>8</p>
+                                                    </div>
+                                                    <div class="num num9">
+                                                        <p>9</p>
+                                                    </div><br>
+                                                    <div class="num num0">
+                                                        <p>0</p>
+                                                    </div>
+                                                    <div class="num confirma">
+                                                        <p>Confirma</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-12 mx-auto">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" class="form-control" id="num_cand" maxlength="2"
+                                                        style="text-align:center;font-size:20px;height:50px;width:30%"
+                                                        readonly>
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary clear"><i class="fas fa-times"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form id="form-vote">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <input type="text" class="d-none" name="cpf" id="form-cpf" required>
+                                                    <input type="text" class="d-none" name="id" id="form-id">
+                                                    <button id="vote" class="d-none" type="submit"></button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modal-cpf" tabindex="-1" role="dialog"
+        aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TituloModalCentralizado">Digite o seu CPF</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>CPF</label>
+                        <input type="text" id="user-cpf" class="form-control" placeholder="452.581.140-40">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-dismiss="modal" id="btn-cpf">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
