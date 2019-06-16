@@ -47,6 +47,16 @@
                 $response = $exception->request_error($method);
             }
             break;
+        case '/urna_sistemas_distribuidos/results' :
+            if($method=='GET'){
+                $response = $election_controller->index();
+            }else{
+                $response = $exception->request_error($method);
+            }
+            break;
+        default:
+            $response = ['message' => '404 Not Found'];
+            break;
     }
 
     echo json_encode($response);

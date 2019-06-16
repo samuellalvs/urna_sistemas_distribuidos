@@ -10,25 +10,22 @@
 		}
 		
 		public function index(){
-			$list_users = array();
-            $sql = "SELECT * from candidates";
-	        $stmt = mysqli_stmt_init($this->conexao->getCon());
-	        if(!mysqli_stmt_prepare($stmt, $sql)){
-	            $response = ['message'=>'Connection error'];
-	        }else{
+			$list_result = array();
+            $sql = "SELECT c.name, c.photo, (SELECT count(id) from Votes where candidate_id = c.id)votes  from candidates as c left join votes as v on v.candidate_id = c.id group by c.name";
+			$stmt = mysqli_stmt_init($this->conexao->getCon());
+			if(!mysqli_stmt_prepare($stmt, $sql)){
+				$response = ['message'=>'Connection error'];
+			}else{
 				mysqli_stmt_execute($stmt);
 				$result = mysqli_stmt_get_result($stmt);
-				foreach($result as $user){
-					$list_users [] = new User(
-						$user['id'],
-						$user['name'],
-						$user['lastname'],
-						$user['email'],
-						$user['sex'],
-						$user['age']
-					);
+				foreach($result as $candidate_info){
+					$list_result [] = [
+						'name' => $candidate_info['name'],
+						'photo' => $candidate_info['photo'],
+						'votes' => $candidate_info['votes']
+					];
 				}
-				$response = $list_users;	
+				$response = $list_result;
             }
             mysqli_stmt_free_result($stmt);
 	        mysqli_stmt_close($stmt);

@@ -98,6 +98,10 @@ $(document).ready(function() {
     $('#form-cpf').val($('#user-cpf').val());
   });
 
+  $('#btn-result').on('click', function(){
+    election_result();
+  });
+
 });
 
 function clear(){
@@ -137,6 +141,15 @@ function search_candidate(){
     $("#candidate-number").html(candidate.number);
     $("#candidate-political").html(candidate.political_party);
     $("#candidate-img").attr("src","http://localhost/urna_sistemas_distribuidos/view/image/candidates/"+candidate.photo);					
+  });
+}
+
+function election_result(){
+  console.log('alo');
+  $('.election-result').html('');
+  var url = 'http://localhost/urna_sistemas_distribuidos/results';
+  $.each(ajax_get(url), function(i, candidate){
+    $('.election-result').append('<div class="row margin"> <div class="col-md-2 my-auto"> <img src="http://localhost/urna_sistemas_distribuidos/view/image/candidates/' + candidate.photo + '" alt="" class="rounded-circle" style="width:100%;"> </div> <div class="col-md-10 my-auto"> <div class="progress my-auto"> <div class="progress-bar" role="progressbar" style="width:'+ candidate.votes*5 + '%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">'+ candidate.votes + ' Votos</div> </div> </div> </div>');
   });
 }
 
