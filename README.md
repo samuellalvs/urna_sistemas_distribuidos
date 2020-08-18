@@ -8,6 +8,7 @@ Projeto consiste em uma simulação de uma urna eletrônica desenvolvida com foc
 - js
 - html
 - css
+- sql
 
 ## Features
 
