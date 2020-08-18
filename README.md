@@ -4,10 +4,10 @@ Projeto consiste em uma simulação de uma urna eletrônica desenvolvida com foc
 
 ## Tecnologias utilizadas
 
--- php
--- js
--- html
--- css
+- php
+- js
+- html
+- css
 
 ## Features
 
